@@ -1,4 +1,0 @@
-<Solution>
-  <Project Path="RowdyTroll.Api/RowdyTroll.Api.csproj" />
-  <Project Path="RowdyTroll.Domain/RowdyTroll.Domain.csproj" />
-</Solution>
