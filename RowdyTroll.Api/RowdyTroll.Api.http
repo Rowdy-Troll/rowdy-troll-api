@@ -1,6 +1,0 @@
-@RowdyTroll.Api_HostAddress = http://localhost:5212
-
-GET {{RowdyTroll.Api_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
