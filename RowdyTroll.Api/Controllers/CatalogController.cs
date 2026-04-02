@@ -22,7 +22,7 @@ namespace RowdyTroll.Api.Controllers
             return Ok(_db.Items);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public IActionResult GetById(int id)
         {
             var item = _db.Items.Find(id);
@@ -38,7 +38,7 @@ namespace RowdyTroll.Api.Controllers
             return Created($"/catalog/{item.Id}", item);
         }
 
-        [HttpPost("{id}/ratings")]
+        [HttpPost("{id:int}/ratings")]
         public IActionResult AddRating(int id, [FromBody] Rating rating)
         {
             var item = _db.Items.Find(id);
@@ -48,7 +48,7 @@ namespace RowdyTroll.Api.Controllers
             return Ok(item);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("{id:int}")]
         public IActionResult Update(int id, [FromBody] Item item)
         {
             if (id != item.Id) return BadRequest();
@@ -65,7 +65,7 @@ namespace RowdyTroll.Api.Controllers
             return NoContent();
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{id:int}")]
         public IActionResult Delete(int id)
         {
             var item = _db.Items.Find(id);
