@@ -1,0 +1,44 @@
+### GET all items
+GET http://localhost:5159/catalog
+
+###
+
+### GET one item
+GET http://localhost:5159/catalog/1
+
+###
+
+### POST rating (add rating to item 1)
+POST http://localhost:5159/catalog/1/ratings
+Content-Type: application/json
+
+{
+  "stars": 5,
+  "userName": "Cardan",
+  "review": "Amazing shoes"
+}
+
+###
+
+### POST rating (add rating to item 2)
+POST http://localhost:5159/catalog/2/ratings
+Content-Type: application/json
+
+{
+  "stars": 4,
+  "userName": "TestUser",
+  "review": "Pretty good"
+}
+
+###
+
+### POST new item
+POST http://localhost:5159/catalog
+Content-Type: application/json
+
+{
+  "name": "Hat",
+  "description": "Cool hat",
+  "brand": "Nike",
+  "price": 19.99
+}
