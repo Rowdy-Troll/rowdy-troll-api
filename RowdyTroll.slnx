@@ -2,4 +2,5 @@
   <Project Path="RowdyTroll.Api/RowdyTroll.Api.csproj" />
   <Project Path="RowdyTroll.Data/RowdyTroll.Data.csproj" />
   <Project Path="RowdyTroll.Domain/RowdyTroll.Domain.csproj" />
+  <Project Path="tests/RowdyTroll.Domain.Tests/RowdyTroll.Domain.Tests.csproj" />
 </Solution>
