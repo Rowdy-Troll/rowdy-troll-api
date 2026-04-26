@@ -1,0 +1,19 @@
+###
+# 1) Replace the placeholders below with your Auth0 values and token
+# 2) Use the 'Send Request' link in VS Code REST Client or run the curl equivalent
+
+# Example: Get a token (machine-to-machine client credentials) - fill in values
+POST https://YOUR_AUTH0_DOMAIN/oauth/token
+Content-Type: application/json
+
+{
+  "client_id": "YOUR_M2M_CLIENT_ID",
+  "client_secret": "YOUR_M2M_CLIENT_SECRET",
+  "audience": "https://your-api-identifier",
+  "grant_type": "client_credentials"
+}
+
+###
+# Example: call the Delete endpoint (replace <access_token> and id)
+DELETE http://127.0.0.1:7250/catalog/3
+Authorization: Bearer <access_token>

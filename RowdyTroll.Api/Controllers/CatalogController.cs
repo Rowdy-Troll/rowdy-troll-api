@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RowdyTroll.Domain.Catalog;
 using RowdyTroll.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace RowdyTroll.Api.Controllers
 {
@@ -66,6 +67,7 @@ namespace RowdyTroll.Api.Controllers
         }
 
         [HttpDelete("{id:int}")]
+        [Authorize(Policy = "delete:catalog")]
         public IActionResult Delete(int id)
         {
             var item = _db.Items.Find(id);
