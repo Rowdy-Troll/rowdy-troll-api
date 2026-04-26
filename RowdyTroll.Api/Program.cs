@@ -35,20 +35,6 @@ builder.Services.AddDbContext<StoreContext>(options =>
         b => b.MigrationsAssembly("RowdyTroll.Api"))
 );
 
-var app = builder.Build();
-
-// Enable Swagger only in Development
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "RowdyTroll API v1"));
-}
-
-app.UseHttpsRedirection();
-
-// Enable CORS using the policy defined above
-app.UseCors("AllowLocalhostFrontend");
-
 // Configure authentication & authorization if Auth0 settings are present
 var auth0Section = builder.Configuration.GetSection("Auth0");
 var auth0Domain = auth0Section.GetValue<string>("Domain");
@@ -78,7 +64,25 @@ if (!string.IsNullOrEmpty(auth0Domain) && !string.IsNullOrEmpty(auth0Audience))
         options.AddPolicy("delete:catalog", policy =>
             policy.Requirements.Add(new HasScopeRequirement("delete:catalog", auth0Domain)));
     });
+}
 
+var app = builder.Build();
+
+// Enable Swagger only in Development
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "RowdyTroll API v1"));
+}
+
+app.UseHttpsRedirection();
+
+// Enable CORS using the policy defined above
+app.UseCors("AllowLocalhostFrontend");
+
+// If Auth0 is configured, enable authentication & authorization in the pipeline
+if (!string.IsNullOrEmpty(auth0Domain) && !string.IsNullOrEmpty(auth0Audience))
+{
     app.UseAuthentication();
     app.UseAuthorization();
 }
