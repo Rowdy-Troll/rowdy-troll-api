@@ -15,5 +15,5 @@ Content-Type: application/json
 
 ###
 # Example: call the Delete endpoint (replace <access_token> and id)
-DELETE https://localhost:7250/catalog/3
+DELETE http://127.0.0.1:7250/catalog/3
 Authorization: Bearer <access_token>
